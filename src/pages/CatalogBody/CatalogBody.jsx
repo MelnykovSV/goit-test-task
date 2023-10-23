@@ -38,7 +38,7 @@ const CatalogBody = () => {
   useEffect(() => {
     const filteredArray = filterArray(cars);
 
-    setFilteredCars(filterArray(filteredArray));
+    setFilteredCars(filteredArray);
     console.log(isFirstRun);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
