@@ -5,9 +5,13 @@ export const Container = styled(Autocomplete)`
   border-radius: 14px;
   background: ${({ theme }) => theme.bgSecondary};
   width: 224px;
+  .MuiTypography-root.MuiTypography-body1 {
+    pointer-events: none;
+  }
   .MuiAutocomplete-inputRoot.MuiInputBase-adornedEnd {
     border-radius: 14px;
     padding-right: 30px;
+    padding-left: 10px;
   }
   .MuiAutocomplete-input::placeholder {
     color: ${({ theme }) => theme.textMain};
@@ -28,9 +32,7 @@ export const Container = styled(Autocomplete)`
     font-weight: 500;
     line-height: calc(20 / 16);
   }
-  /* .MuiAutocomplete-paper {
-    transform: translateY(20px) !important; // Move the dropdown down by 20px
-  } */
+
   .MuiInputBase-inputAdornedStart {
     text-overflow: clip;
   }

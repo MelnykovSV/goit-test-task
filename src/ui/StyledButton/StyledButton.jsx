@@ -1,11 +1,9 @@
-import { Container } from "./StyledButton.styled";
+import * as S from './StyledButton.styled';
 
 export const StyledButton = ({ children, ...props }) => {
   return (
-    <Container variant="contained" {...props}>
+    <S.Container variant="contained" {...props}>
       {children}
-    </Container>
+    </S.Container>
   );
 };
-
-

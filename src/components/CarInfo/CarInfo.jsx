@@ -9,6 +9,7 @@ export const CarInfo = ({ car, handleClose }) => {
     id,
     year,
     make,
+    model,
     type,
     img,
     description,
@@ -43,8 +44,8 @@ export const CarInfo = ({ car, handleClose }) => {
         )}
       </S.ImageContainer>
       <S.CarTitleBlock className="mode">
-        {<span>{make.split(' ')[0]}</span> || '------'}&nbsp;
-        {<span className="accent"> {make.split(' ')[1]}</span> || ''},{' '}
+        {make || '------'}&nbsp;
+        {<span className="accent"> {model || '-----'}</span> || ''},{' '}
         {year || '----'}
       </S.CarTitleBlock>
       <S.CarInfoBlock className="first-list">
@@ -104,7 +105,9 @@ export const CarInfo = ({ car, handleClose }) => {
           Price: <span className="accent">{rentalPrice.replace('$', '')}$</span>{' '}
         </li>
       </S.StyledFeatures>
-      <StyledButton className="rent-car-button">Rental car</StyledButton>
+      <StyledButton href="tel:+380730000000" className="rent-car-button">
+        Rental car
+      </StyledButton>
       <button
         type="button"
         onClick={handleClose}

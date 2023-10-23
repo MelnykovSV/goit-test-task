@@ -1,10 +1,10 @@
-import { Container } from "./HomePage.styled";
+import * as S from './HomePage.styled';
 
 const HomePage = () => {
   return (
-    <Container className="container">
+    <S.Container className="container">
       <h1>Home page</h1>
-    </Container>
+    </S.Container>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Container } from './BrandStyledSelect.styled';
+import * as S from './BrandStyledSelect.styled';
 import TextField from '@mui/material/TextField';
 import { ReactComponent as AngleIcon } from './../../icons/chevron-down.svg';
 import Box from '@mui/material/Box';
@@ -13,18 +13,16 @@ export const BrandStyledSelect = ({
   ...props
 }) => {
   return (
-    <Container
+    <S.Container
       disablePortal
       options={options}
       name={name}
       value={value}
-      // disableClearable
       onChange={(event, newValue) => {
         changeHandler(newValue);
       }}
       popupIcon={<AngleIcon />}
       getOptionLabel={option => {
-        console.log(option);
         return option;
       }}
       sx={{
@@ -34,7 +32,8 @@ export const BrandStyledSelect = ({
         },
         "& + .MuiAutocomplete-popper .MuiAutocomplete-option[aria-selected='true']":
           {
-            backgroundColor: '#4396e6',
+            color: '#121417',
+            backgroundColor: '#ffffff',
           },
         "& + .MuiAutocomplete-popper .MuiAutocomplete-option[aria-selected ='true'] .Mui-focused":
           {
@@ -54,6 +53,6 @@ export const BrandStyledSelect = ({
       renderInput={params => {
         return <TextField {...params} placeholder={placeholder} fullWidth />;
       }}
-    ></Container>
+    ></S.Container>
   );
 };

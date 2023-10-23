@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { carsEndpoint, carsPerPage } from '../../constants';
 import { CarsList } from '../../components';
-import { generateQueryString } from '../../helpers';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentPage } from '../../redux/favoriteCars/carsSlice';
 import { incrementCurrentPage } from '../../redux/favoriteCars/carsSlice';
@@ -20,15 +19,6 @@ const CatalogBody = () => {
   const minMileage = searchParams.get('minMileage');
   const maxMileage = searchParams.get('maxMileage');
 
-  const queryString = generateQueryString({
-    make,
-    rentalPrice,
-    minMileage,
-    maxMileage,
-  });
-
-  console.log(queryString);
-
   const [isLoading, setIsLoading] = useState(false);
   const [cars, setCars] = useState([]);
   const [filteredCars, setFilteredCars] = useState([]);
@@ -39,17 +29,9 @@ const CatalogBody = () => {
     const filteredArray = filterArray(cars);
 
     setFilteredCars(filteredArray);
-    console.log(isFirstRun);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cars]);
-
-  // useEffect(() => {
-  //   if (isFirstRun.current) {
-  //     isFirstRun.current = false;
-  //     return;
-  //   }
-  // });
 
   const filterArray = arr => {
     if (!rentalPrice && !minMileage && !maxMileage && arr.length === 0) {
@@ -64,7 +46,6 @@ const CatalogBody = () => {
 
     const filteredByMinMileage = minMileage
       ? filteredByRentalPrice.filter(item => {
-          console.log(Number(item.mileage));
           return Number(item.mileage) >= Number(minMileage);
         })
       : [...filteredByRentalPrice];
@@ -74,10 +55,6 @@ const CatalogBody = () => {
           item => Number(item.mileage) <= Number(maxMileage)
         )
       : [...filteredByMinMileage];
-
-    // if (filteredByMaxMileage.length === 0 && !isFirstRun.current) {
-    //   toast.warning('No result found!');
-    // }
 
     return filteredByMaxMileage;
   };
@@ -95,7 +72,7 @@ const CatalogBody = () => {
               make ? `&make=${make}` : ''
             }`
       );
-      if (! filterArray(response.data).length) {
+      if (!filterArray(response.data).length) {
         toast.warning('No data');
       }
 

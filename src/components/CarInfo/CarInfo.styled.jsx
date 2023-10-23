@@ -1,15 +1,16 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const Container = styled.div`
-  width: 541px;
+  width: 100%;
   border-radius: 24px;
   position: relative;
   padding: 40px;
   background-color: white;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+
+
+  @media screen and (min-width: 768px) {
+    width: 541px;
+  }
 
   .accent {
     color: ${({ theme }) => theme.accentMain};
@@ -65,7 +66,7 @@ export const CarInfoBlock = styled.div`
 
     column-gap: 12px;
     row-gap: 4px;
-    font-family: "Manrope";
+    font-family: 'Manrope';
     font-size: 12px;
     line-height: calc(18 / 12);
     color: ${({ theme }) => theme.textSemiLight};
@@ -77,7 +78,7 @@ export const CarInfoBlock = styled.div`
 
     &:before {
       position: absolute;
-      content: "";
+      content: '';
       height: 100%;
       width: 1px;
       left: -6px;
@@ -87,8 +88,8 @@ export const CarInfoBlock = styled.div`
 `;
 
 export const StyledParagraph = styled.div`
-  color: #121417;
-  font-family: "Manrope";
+  color: ${({ theme }) => theme.textMain};
+  font-family: 'Manrope';
   font-size: 14px;
   font-weight: 500;
   line-height: calc(20 / 14);
@@ -108,8 +109,7 @@ export const StyledParagraph = styled.div`
 
 export const CarTitleBlock = styled.p`
   display: flex;
-  /* justify-content: space-between; */
-  font-family: "Manrope";
+  font-family: 'Manrope';
   font-size: 18px;
   font-weight: 500;
   line-height: calc(24 / 18);
@@ -135,7 +135,7 @@ export const StyledFeatures = styled.ul`
   color: ${({ theme }) => theme.textSecondary};
   margin-bottom: 24px;
 
-  font-family: "Manrope";
+  font-family: 'Manrope';
   font-size: 12px;
   line-height: calc(18 / 12);
   li {

@@ -1,13 +1,13 @@
-import { Container } from "./CatalogPage.styled";
-import { Outlet } from "react-router";
-import { SearchForm } from "../../components";
+import * as S from './CatalogPage.styled';
+import { Outlet } from 'react-router';
+import { SearchForm } from '../../components';
 
 const CatalogPage = () => {
   return (
-    <Container className="container">
+    <S.Container className="container">
       <SearchForm />
       <Outlet />
-    </Container>
+    </S.Container>
   );
 };
 

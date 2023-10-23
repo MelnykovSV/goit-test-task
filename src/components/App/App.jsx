@@ -1,21 +1,21 @@
-import { Route, Routes } from "react-router-dom";
-import { Container } from "./App.styled";
-import { ModernNormalize } from "emotion-modern-normalize";
-import { Suspense, lazy } from "react";
-import { ToastContainer } from "react-toastify";
-import { SharedLayout } from "../SharedLayout/SharedLayout";
-import StyledLoader from "../../ui/StyledLoader/StyledLoader";
+import { Route, Routes } from 'react-router-dom';
+import * as S from './App.styled';
+import { ModernNormalize } from 'emotion-modern-normalize';
+import { Suspense, lazy } from 'react';
+import { ToastContainer } from 'react-toastify';
+import { SharedLayout } from '../SharedLayout/SharedLayout';
+import StyledLoader from '../../ui/StyledLoader/StyledLoader';
 
-const CatalogPage = lazy(() => import("../../pages/CatalogPage/CatalogPage"));
+const CatalogPage = lazy(() => import('../../pages/CatalogPage/CatalogPage'));
 const FavoritesPage = lazy(() =>
-  import("../../pages/FavoritesPage/FavoritesPage")
+  import('../../pages/FavoritesPage/FavoritesPage')
 );
-const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
-const CatalogBody = lazy(() => import("../../pages/CatalogBody/CatalogBody"));
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
+const CatalogBody = lazy(() => import('../../pages/CatalogBody/CatalogBody'));
 
 function App() {
   return (
-    <Container>
+    <S.Container>
       <ModernNormalize />
       <Suspense fallback={<StyledLoader />}>
         <Routes>
@@ -30,7 +30,7 @@ function App() {
         </Routes>
       </Suspense>
       <ToastContainer />
-    </Container>
+    </S.Container>
   );
 }
 

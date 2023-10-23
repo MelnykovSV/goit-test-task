@@ -54,13 +54,14 @@ export const Container = styled.form`
   .MuiInputBase-fullWidth {
     padding-left: 18px;
   }
+
   .MuiOutlinedInput-input {
     font-family: Manrope;
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: 20px;
-    color: #121417;
+    color: ${({ theme }) => theme.textMain};
   }
   .MuiTypography-root {
     font-family: Manrope;
@@ -68,7 +69,7 @@ export const Container = styled.form`
     font-style: normal;
     font-weight: 500;
     line-height: 20px;
-    color: #121417;
+    color: ${({ theme }) => theme.textMain};
   }
 
   .search-form-block {
@@ -101,7 +102,10 @@ export const Container = styled.form`
       }
       .textfield {
         width: 140px;
-        background: #f7f7fb;
+        background: ${({ theme }) => theme.bgSecondary};
+        .MuiTypography-root.MuiTypography-body1 {
+          pointer-events: none;
+        }
         @media screen and (min-width: 768px) {
           width: 160px;
         }

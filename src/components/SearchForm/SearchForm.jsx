@@ -1,4 +1,4 @@
-import { Container } from './SearchForm.styled';
+import * as S from './SearchForm.styled';
 import { useNavigate } from 'react-router';
 import { generateQueryString } from '../../helpers';
 import { useSearchParams } from 'react-router-dom';
@@ -11,6 +11,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { resetCurrentPage } from '../../redux/favoriteCars/carsSlice';
 import { toast } from 'react-toastify';
+
+const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+const removeNonNumeric = num => num.toString().replace(/[^0-9]/g, '');
 
 export const SearchForm = () => {
   const dispatch = useDispatch();
@@ -31,7 +34,6 @@ export const SearchForm = () => {
 
   const submitHandler = e => {
     e.preventDefault();
-    console.log(currentBrandValue);
     if (
       make === currentBrandValue &&
       rentalPrice === currentRentalPriceValue &&
@@ -52,27 +54,26 @@ export const SearchForm = () => {
       minMileage: currentMinMileageValue,
       maxMileage: currentMaxMileageValue,
     });
-    console.log(queryString);
     dispatch(resetCurrentPage());
 
     navigate(queryString ? `?${queryString}` : '');
   };
 
-  const brandChangeHandler = brand => {
-    setCurrentBrandValue(brand);
+  const brandChangeHandler = value => {
+    setCurrentBrandValue(value);
   };
-  const rentalPriceChangeHandler = brand => {
-    setCurrentRentalPriceValue(brand);
+  const rentalPriceChangeHandler = value => {
+    setCurrentRentalPriceValue(value);
   };
-  const minMileageChangeHandler = brand => {
-    setCurrentMinMileageValue(brand);
+  const minMileageChangeHandler = value => {
+    setCurrentMinMileageValue(removeNonNumeric(value));
   };
-  const maxMileageChangeHandler = brand => {
-    setCurrentMaxMileageValue(brand);
+  const maxMileageChangeHandler = value => {
+    setCurrentMaxMileageValue(removeNonNumeric(value));
   };
 
   return (
-    <Container onSubmit={submitHandler}>
+    <S.Container onSubmit={submitHandler}>
       <div className="search-form-outer-block">
         <div className="search-form-block">
           <label htmlFor="brands-select" className="label">
@@ -112,7 +113,9 @@ export const SearchForm = () => {
               className="textfield textfield-from"
               id="min-mileage-input"
               name="minMileage"
-              value={currentMinMileageValue || ''}
+              value={
+                currentMinMileageValue ? addCommas(currentMinMileageValue) : ''
+              }
               onChange={e => {
                 minMileageChangeHandler(e.target.value);
               }}
@@ -121,6 +124,7 @@ export const SearchForm = () => {
                   <InputAdornment position="start">From</InputAdornment>
                 ),
               }}
+              inputProps={{ inputMode: 'numeric', pattern: '[0-9,]*' }}
               label=""
               variant="outlined"
             />
@@ -128,7 +132,9 @@ export const SearchForm = () => {
               className="textfield textfield-to"
               id="max-mileage-input"
               name="maxMileage"
-              value={currentMaxMileageValue || ''}
+              value={
+                currentMaxMileageValue ? addCommas(currentMaxMileageValue) : ''
+              }
               onChange={e => {
                 maxMileageChangeHandler(e.target.value);
               }}
@@ -137,6 +143,7 @@ export const SearchForm = () => {
                   <InputAdornment position="start">To</InputAdornment>
                 ),
               }}
+              inputProps={{ inputMode: 'numeric', pattern: '[0-9,]*' }}
               label=""
               variant="outlined"
             />
@@ -150,6 +157,6 @@ export const SearchForm = () => {
           Search
         </StyledButton>
       </div>
-    </Container>
+    </S.Container>
   );
 };

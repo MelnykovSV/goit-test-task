@@ -1,5 +1,5 @@
-import Autocomplete from "@mui/material/Autocomplete";
-import styled from "@emotion/styled";
+import Autocomplete from '@mui/material/Autocomplete';
+import styled from '@emotion/styled';
 
 export const Container = styled(Autocomplete)`
   border-radius: 14px;
@@ -14,7 +14,7 @@ export const Container = styled(Autocomplete)`
     z-index: 50;
     opacity: 1;
 
-    font-family: "Manrope";
+    font-family: 'Manrope';
     font-size: 18px;
     font-weight: 500;
     line-height: calc(20 / 18);
@@ -22,12 +22,9 @@ export const Container = styled(Autocomplete)`
   .MuiAutocomplete-popper {
     color: ${({ theme }) => theme.textLight};
 
-    font-family: "Manrope";
+    font-family: 'Manrope';
     font-size: 16px;
     font-weight: 500;
     line-height: calc(20 / 16);
-  }
-  .MuiAutocomplete-paper {
-    transform: translateY(20px) !important; // Move the dropdown down by 20px
   }
 `;

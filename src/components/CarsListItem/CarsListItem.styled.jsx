@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const CarCard = styled.li`
   width: 274px;
@@ -28,13 +28,16 @@ export const FavoritesIconButton = styled.div`
 export const CarTitleBlock = styled.div`
   display: flex;
   justify-content: space-between;
-  font-family: "Manrope";
+  font-family: 'Manrope';
   font-size: 16px;
   font-weight: 500;
   line-height: calc(24 / 16);
   margin-bottom: 8px;
+  .accent {
+    color: ${({ theme }) => theme.accentMain};
+  }
   .mode {
-    max-width: 200px;
+    max-width: 220px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -62,7 +65,7 @@ export const CarInfoBlock = styled.div`
 
     column-gap: 12px;
     row-gap: 4px;
-    font-family: "Manrope";
+    font-family: 'Manrope';
     font-size: 12px;
     line-height: calc(18 / 12);
     color: ${({ theme }) => theme.textSemiLight};
@@ -74,7 +77,7 @@ export const CarInfoBlock = styled.div`
 
     &:before {
       position: absolute;
-      content: "";
+      content: '';
       height: 100%;
       width: 1px;
       left: -6px;

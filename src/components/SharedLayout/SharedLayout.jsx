@@ -1,8 +1,8 @@
-import * as S from "./SharedLayout.styled";
-import { Outlet } from "react-router";
-import { NavLink } from "react-router-dom";
-import { useLocation } from "react-router";
-import { StyledButton } from "../../ui";
+import * as S from './SharedLayout.styled';
+import { Outlet } from 'react-router';
+import { NavLink } from 'react-router-dom';
+import { useLocation } from 'react-router';
+import { StyledButton } from '../../ui';
 
 export const SharedLayout = () => {
   const location = useLocation();
@@ -16,13 +16,15 @@ export const SharedLayout = () => {
             </StyledButton>
             <StyledButton
               component={NavLink}
-              to={location.state?.from ?? "/catalog"}>
+              to={location.state?.from ?? '/catalog'}
+            >
               Catalog
             </StyledButton>
             <StyledButton
               component={NavLink}
               to="favorites"
-              state={{ from: location }}>
+              state={{ from: location }}
+            >
               Favorites
             </StyledButton>
           </S.StyledNav>

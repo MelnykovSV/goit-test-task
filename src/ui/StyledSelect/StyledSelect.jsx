@@ -1,8 +1,8 @@
-import { Container } from "./StyledSelect.styled";
-import TextField from "@mui/material/TextField";
-import { ReactComponent as AngleIcon } from "./../../icons/chevron-down.svg";
-import InputAdornment from "@mui/material/InputAdornment";
-import Box from "@mui/material/Box";
+import * as S from './StyledSelect.styled';
+import TextField from '@mui/material/TextField';
+import { ReactComponent as AngleIcon } from './../../icons/chevron-down.svg';
+import InputAdornment from '@mui/material/InputAdornment';
+import Box from '@mui/material/Box';
 
 export const StyledSelect = ({
   options,
@@ -14,7 +14,7 @@ export const StyledSelect = ({
   ...props
 }) => {
   return (
-    <Container
+    <S.Container
       disablePortal
       value={value}
       options={options}
@@ -23,31 +23,31 @@ export const StyledSelect = ({
         changeHandler(newValue);
       }}
       popupIcon={<AngleIcon />}
-      getOptionLabel={(option) => (adornments ? option + "$" : option)}
+      getOptionLabel={option => (adornments ? option + '$' : option)}
       sx={{
-        "& + .MuiAutocomplete-popper": { top: "100%" },
-        "& + .MuiAutocomplete-popper .MuiAutocomplete-option": {
-          color: "rgba(18, 20, 23, 0.20)",
+        '& + .MuiAutocomplete-popper': { top: '100%' },
+        '& + .MuiAutocomplete-popper .MuiAutocomplete-option': {
+          color: 'rgba(18, 20, 23, 0.20)',
         },
         "& + .MuiAutocomplete-popper .MuiAutocomplete-option[aria-selected='true']":
           {
-            backgroundColor: "#4396e6",
+            color: '#121417',
+            backgroundColor: '#ffffff',
           },
         "& + .MuiAutocomplete-popper .MuiAutocomplete-option[aria-selected ='true'] .Mui-focused":
-          {
-            backgroundColor: "#3878b4",
-          },
+          {},
       }}
       {...props}
       renderOption={(props, option) => (
         <Box
           component="li"
-          sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-          {...props}>
+          sx={{ '& > img': { mr: 2, flexShrink: 0 } }}
+          {...props}
+        >
           {option}
         </Box>
       )}
-      renderInput={(params) => {
+      renderInput={params => {
         params.InputProps.startAdornment = (
           <InputAdornment position="start">To</InputAdornment>
         );
@@ -60,6 +60,7 @@ export const StyledSelect = ({
             fullWidth
           />
         );
-      }}></Container>
+      }}
+    ></S.Container>
   );
 };
