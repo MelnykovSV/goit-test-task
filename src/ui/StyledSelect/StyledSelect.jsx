@@ -56,9 +56,6 @@ export const StyledSelect = ({
           <TextField
             {...params}
             name={name}
-            // variant="standard"
-            // label="Multiple values"
-
             placeholder={placeholder}
             fullWidth
           />

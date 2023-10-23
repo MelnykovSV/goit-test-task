@@ -1,19 +1,47 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const Container = styled.form`
   display: flex;
+  flex-direction: column;
   position: relative;
-  align-items: end;
+  align-items: start;
   justify-content: center;
   margin-bottom: 44px;
-  &:after {
-    /* content: "";
-    position: absolute;
-    height: 100%;
-    width: 2px;
-    left: 160px;
-    background-color: ${({ theme }) => theme.textLight}; */
+  gap: 18px;
+
+  .search-form-outer-block {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 18px;
+    &:last-of-type {
+      align-items: center;
+    }
   }
+
+  @media screen and (min-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+
+    .search-form-outer-block {
+      flex-direction: row;
+      &:first-of-type {
+      }
+      &:last-of-type {
+        align-items: end;
+      }
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+    align-items: end;
+    .search-form-outer-block {
+      &:first-of-type {
+        gap: 18px;
+      }
+    }
+  }
+
   .MuiInputBase-adornedStart {
     padding-left: 18px;
   }
@@ -42,12 +70,12 @@ export const Container = styled.form`
     line-height: 20px;
     color: #121417;
   }
-  gap: 18px;
+
   .search-form-block {
     .label {
       display: block;
       color: ${({ theme }) => theme.textLightSecondary};
-      font-family: "Manrope";
+      font-family: 'Manrope';
       font-size: 14px;
       font-weight: 500;
       line-height: calc(18 / 14);
@@ -55,7 +83,10 @@ export const Container = styled.form`
     }
     .paired-inputs-container {
       display: flex;
-      width: 320px;
+      width: 280px;
+      @media screen and (min-width: 768px) {
+        width: 320px;
+      }
 
       .MuiInputBase-adornedStart {
         padding-left: 24px;
@@ -69,8 +100,11 @@ export const Container = styled.form`
         border-radius: 0 14px 14px 0;
       }
       .textfield {
-        width: 160px;
+        width: 140px;
         background: #f7f7fb;
+        @media screen and (min-width: 768px) {
+          width: 160px;
+        }
       }
     }
     .select {
