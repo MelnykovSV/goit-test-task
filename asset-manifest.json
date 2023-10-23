@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/goit-test-task/static/css/main.bca45e79.css",
-    "main.js": "/goit-test-task/static/js/main.3a6ea6cc.js",
+    "main.js": "/goit-test-task/static/js/main.cfbadca3.js",
     "static/js/677.35354f03.chunk.js": "/goit-test-task/static/js/677.35354f03.chunk.js",
     "static/js/152.12d47a77.chunk.js": "/goit-test-task/static/js/152.12d47a77.chunk.js",
     "static/js/812.6bf3d58f.chunk.js": "/goit-test-task/static/js/812.6bf3d58f.chunk.js",
@@ -44,7 +44,7 @@
     "static/media/cross.svg": "/goit-test-task/static/media/cross.f3cbdd58dc25ca7cbb3d242106b56fb9.svg",
     "static/media/chevron-down.svg": "/goit-test-task/static/media/chevron-down.24cd320d509ea2ebbeb4265f8030bafb.svg",
     "main.bca45e79.css.map": "/goit-test-task/static/css/main.bca45e79.css.map",
-    "main.3a6ea6cc.js.map": "/goit-test-task/static/js/main.3a6ea6cc.js.map",
+    "main.cfbadca3.js.map": "/goit-test-task/static/js/main.cfbadca3.js.map",
     "677.35354f03.chunk.js.map": "/goit-test-task/static/js/677.35354f03.chunk.js.map",
     "152.12d47a77.chunk.js.map": "/goit-test-task/static/js/152.12d47a77.chunk.js.map",
     "812.6bf3d58f.chunk.js.map": "/goit-test-task/static/js/812.6bf3d58f.chunk.js.map",
@@ -54,6 +54,6 @@
   },
   "entrypoints": [
     "static/css/main.bca45e79.css",
-    "static/js/main.3a6ea6cc.js"
+    "static/js/main.cfbadca3.js"
   ]
 }
