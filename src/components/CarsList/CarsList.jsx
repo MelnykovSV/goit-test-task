@@ -1,11 +1,14 @@
-import { Container } from "./CarsList.styled";
-import { CarsListItem } from "../CarsListItem/CarsListItem";
+import { Container } from './CarsList.styled';
+import { CarsListItem } from '../CarsListItem/CarsListItem';
+
 
 export const CarsList = ({ cars }) => {
-  console.log("list rerender");
+
+
+  console.log('list rerender');
   return (
     <Container>
-      {cars.map((car) => (
+      {cars.map(car => (
         <CarsListItem car={car} key={car.id} />
       ))}
     </Container>

@@ -75,9 +75,9 @@ const CatalogBody = () => {
         )
       : [...filteredByMinMileage];
 
-    if (filteredByMaxMileage.length === 0) {
-      toast.warning('No result found!');
-    }
+    // if (filteredByMaxMileage.length === 0 && !isFirstRun.current) {
+    //   toast.warning('No result found!');
+    // }
 
     return filteredByMaxMileage;
   };
@@ -95,6 +95,9 @@ const CatalogBody = () => {
               make ? `&make=${make}` : ''
             }`
       );
+      if (! filterArray(response.data).length) {
+        toast.warning('No data');
+      }
 
       setIsLoading(false);
       if (response.data.length === carsPerPage) {
