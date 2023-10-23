@@ -1,24 +1,24 @@
-import * as S from "./CatalogBody.styled";
-import { useSearchParams } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
-import axios from "axios";
-import { carsEndpoint, carsPerPage } from "../../constants";
-import { CarsList } from "../../components";
-import { generateQueryString } from "../../helpers";
-import { useSelector, useDispatch } from "react-redux";
-import { selectCurrentPage } from "../../redux/favoriteCars/carsSlice";
-import { incrementCurrentPage } from "../../redux/favoriteCars/carsSlice";
-import StyledLoader from "../../ui/StyledLoader/StyledLoader";
-import { toast } from "react-toastify";
+import * as S from './CatalogBody.styled';
+import { useSearchParams } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
+import { carsEndpoint, carsPerPage } from '../../constants';
+import { CarsList } from '../../components';
+import { generateQueryString } from '../../helpers';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectCurrentPage } from '../../redux/favoriteCars/carsSlice';
+import { incrementCurrentPage } from '../../redux/favoriteCars/carsSlice';
+import StyledLoader from '../../ui/StyledLoader/StyledLoader';
+import { toast } from 'react-toastify';
 
 const CatalogBody = () => {
   const dispatch = useDispatch();
   const currentPage = useSelector(selectCurrentPage);
   const [searchParams] = useSearchParams();
-  const make = searchParams.get("make");
-  const rentalPrice = searchParams.get("rentalPrice");
-  const minMileage = searchParams.get("minMileage");
-  const maxMileage = searchParams.get("maxMileage");
+  const make = searchParams.get('make');
+  const rentalPrice = searchParams.get('rentalPrice');
+  const minMileage = searchParams.get('minMileage');
+  const maxMileage = searchParams.get('maxMileage');
 
   const queryString = generateQueryString({
     make,
@@ -41,10 +41,6 @@ const CatalogBody = () => {
     setFilteredCars(filterArray(filteredArray));
     console.log(isFirstRun);
 
-    if (filteredArray.length === 0 && !isFirstRun.current) {
-      toast.warning("No result found!");
-    }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cars]);
 
@@ -55,19 +51,19 @@ const CatalogBody = () => {
   //   }
   // });
 
-  const filterArray = (arr) => {
+  const filterArray = arr => {
     if (!rentalPrice && !minMileage && !maxMileage && arr.length === 0) {
       return arr;
     }
     const filteredByRentalPrice = rentalPrice
       ? arr.filter(
-          (item) =>
-            Number(item.rentalPrice.replace("$", "")) <= Number(rentalPrice)
+          item =>
+            Number(item.rentalPrice.replace('$', '')) <= Number(rentalPrice)
         )
       : [...arr];
 
     const filteredByMinMileage = minMileage
-      ? filteredByRentalPrice.filter((item) => {
+      ? filteredByRentalPrice.filter(item => {
           console.log(Number(item.mileage));
           return Number(item.mileage) >= Number(minMileage);
         })
@@ -75,14 +71,18 @@ const CatalogBody = () => {
 
     const filteredByMaxMileage = maxMileage
       ? filteredByMinMileage.filter(
-          (item) => Number(item.mileage) <= Number(maxMileage)
+          item => Number(item.mileage) <= Number(maxMileage)
         )
       : [...filteredByMinMileage];
+
+    if (filteredByMaxMileage.length === 0) {
+      toast.warning('No result found!');
+    }
 
     return filteredByMaxMileage;
   };
 
-  const fetchCarsData = async (page) => {
+  const fetchCarsData = async page => {
     setIsLoading(true);
     if (page === 1 || rentalPrice || minMileage || maxMileage) {
       setCars([]);
@@ -90,9 +90,9 @@ const CatalogBody = () => {
     try {
       const response = await axios.get(
         rentalPrice || minMileage || maxMileage
-          ? `${carsEndpoint}?page=1&limit=25${make ? `&make=${make}` : ""}`
+          ? `${carsEndpoint}?page=1&limit=25${make ? `&make=${make}` : ''}`
           : `${carsEndpoint}?page=${page}&limit=${carsPerPage}${
-              make ? `&make=${make}` : ""
+              make ? `&make=${make}` : ''
             }`
       );
 
